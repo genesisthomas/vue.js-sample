@@ -1,4 +1,4 @@
-## Vue-js Sample Code:
+## Vue-js Sample Code
 
 ## Installation
 
