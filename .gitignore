@@ -87,3 +87,5 @@ build/
 .idea/
 output.txt
 out.txt
+
+.dccache
