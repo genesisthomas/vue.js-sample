@@ -33,7 +33,7 @@ public class PerfectoWatcher implements TestWatcher, AfterAllCallback {
 			return;
 		}
 		System.out.println("Test Successful for test: " + context.getDisplayName());
-		TestBase.reportiumClient.testStop(TestResultFactory.createSuccess());
+		//TestBase.reportiumClient.testStop(TestResultFactory.createSuccess());
 		testResultsStatus.add(TestResultStatus.SUCCESSFUL);
 		TestBase.driver.quit();
 	}
@@ -50,7 +50,7 @@ public class PerfectoWatcher implements TestWatcher, AfterAllCallback {
 			return;
 		}
 		System.out.println("Test Failed for test: " + context.getDisplayName() + " with reason: " + cause.getMessage());
-		TestBase.reportiumClient.testStop(TestResultFactory.createFailure(cause));
+		//TestBase.reportiumClient.testStop(TestResultFactory.createFailure(cause));
 		testResultsStatus.add(TestResultStatus.FAILED);
 		TestBase.driver.quit();
 	}
