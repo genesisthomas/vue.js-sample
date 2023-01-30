@@ -85,7 +85,7 @@ public class TestBase {
   @Test
   void connect() {
     String title = "event";
-    driver.get("http://0.0.0.0:8090/");
+    driver.get("http://nexus-a.kaholodemo.net:8090/");
     WebDriverWait wait = new WebDriverWait(driver, 5);
     wait.until(
       ExpectedConditions.visibilityOfElementLocated(
