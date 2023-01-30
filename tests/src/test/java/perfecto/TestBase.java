@@ -31,8 +31,7 @@ public class TestBase {
   @BeforeEach
   public void setUp() throws Exception {
     String type = "local";
-    switch ("local") {
-      case "local":
+    if (type == "local"){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
@@ -44,22 +43,14 @@ public class TestBase {
         options.addArguments("--no-sandbox"); // Bypass OS security model
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        break;
-      case "perfecto":
+	} else{
         // Replace <<cloud name>> with your perfecto cloud name (e.g. demo) or pass it as maven properties: -DcloudName=<<cloud name>>
         String cloudName = "<<cloud name>>";
         // Replace <<security token>> with your perfecto security token or pass it as  maven properties: -DsecurityToken=<<SECURITY TOKEN>> More info:
         // https://developers.perfectomobile.com/display/PD/Generate+security+tokens
         String securityToken = "<<security token>>";
-        DesiredCapabilities capabilities = new DesiredCapabilities(
-          "",
-          "",
-          Platform.ANY
-        );
-        capabilities.setCapability(
-          "securityToken",
-          Utils.fetchSecurityToken(securityToken)
-        );
+        DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
+        capabilities.setCapability("securityToken",Utils.fetchSecurityToken(securityToken));
         capabilities.setCapability("platformName", "Windows");
         capabilities.setCapability("platformVersion", "11");
         capabilities.setCapability("browserName", "Chrome");
@@ -88,14 +79,13 @@ public class TestBase {
           );
         }
         reportiumClient = Utils.setReportiumClient(driver, reportiumClient); // Creates reportiumClient
-        break;
     }
   }
 
   @Test
   void connect() {
     String title = "event";
-    driver.get("http://localhost:8090/");
+    driver.get("http://0.0.0.0:8090/");
     WebDriverWait wait = new WebDriverWait(driver, 5);
     wait.until(
       ExpectedConditions.visibilityOfElementLocated(
