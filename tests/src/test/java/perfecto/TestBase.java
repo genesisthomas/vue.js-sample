@@ -95,7 +95,7 @@ public class TestBase {
   @Test
   void connect() {
     String title = "event";
-    driver.get("http://0.0.0.0:8090/");
+    driver.get("http://localhost:8090/");
     WebDriverWait wait = new WebDriverWait(driver, 5);
     wait.until(
       ExpectedConditions.visibilityOfElementLocated(
